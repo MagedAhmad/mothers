@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ollsell Mother day</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-purple-100">
+    <section class="w-full px-8 py-16 xl:px-8 tails-selected-element">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col items-center md:flex-row">
+    
+                <div class="w-full space-y-5 md:w-1/5 md:pr-16">
+                </div>
+    
+                <div class="w-full mt-16 md:mt-0 md:w-3/5">
+                    <div class="relative z-10 h-auto p-8 py-10 overflow-hidden bg-white border-b-2 border-gray-300 rounded-lg shadow-2xl px-7" data-rounded="rounded-lg" data-rounded-max="rounded-full">
+                        <h3 class="mb-6 text-2xl font-medium text-center">Type your mother whatsapp phone number</h3>
+                        <input type="text" name="name" id="username" value="" class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none" data-rounded="rounded-lg" data-primary="blue-500" placeholder="Your name">
+                        <input type="text" name="phone" id="phone" value="" class="block w-full px-4 py-3 mb-4 border border-2 border-transparent border-gray-200 rounded-lg focus:ring focus:ring-blue-500 focus:outline-none" data-rounded="rounded-lg" data-primary="blue-500" placeholder="Your mother whatsapp number">
+                        <div class="block">
+                            <button id="btn" disabled class="cursor-not-allowed bg-gray-400 cursor-pointer w-full px-3 py-4 font-medium text-white bg-purple-500 rounded-lg" data-primary="blue-600" data-rounded="rounded-lg">Send</button>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function(){
+
+            $('input').on('keyup', function() {
+                let number = $('#phone').val()
+                let username = $('#username').val()
+                if(number !== '' && username !== '' && number.length > 8) {
+                    $('button').removeClass('bg-gray-400')
+                    $('button').addClass('bg-purple-500')
+                    $('button').removeAttr('disabled')
+                }else {
+                    $('button').addClass('bg-gray-400')
+                    $('button').removeClass('bg-purple-500')
+                    $('button').attr('disabled')
+                }
+            })
+            
+            $('button').click(function(){
+                let number = $('#phone').val()
+                let username = $('#username').val()
+                let text = 'Our dear mother / Umm '+ username +' As a result of your love, giving, and sacrifices for your son, we are proud today of his presence among us within your family and of his being a major factor in our success. Thank you from the heart and we wish you a happy mother\'s day!❤️ The family of the OLLKOM group'
+                text = decodeURIComponent(text)
+                let whatsappLink = "https://api.whatsapp.com/send?phone="+ number +"&text=" + text;
+                
+                window.location.href = whatsappLink
+            });
+        });
+        
+    </script>
+</body>
+</html>
